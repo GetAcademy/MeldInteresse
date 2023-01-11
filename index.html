@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p>
+        Hurra - så bra at du er interessert! Start IT finnes i to varianter. Svar på spørsmålene under, så
+        finner vi riktig variant for deg!
+    </p>
+    Vil du ha studiepoeng (og eksamen)?<br />
+    <input type="radio" name="points" onchange="points=true;update()" /> Ja<br />
+    <input type="radio" name="points" onchange="points=false;update()" /> Nei<br><br />
+    Vil du søke støtte fra Lånekassen?<br />
+    <input type="radio" name="loan" onchange="loan=true;update()" /> Ja<br />
+    <input type="radio" name="loan" onchange="loan=false;update()" /> Nei<br><br />
+    <div id="info"></div>
+
+    <script>
+        let points = null;
+        let loan = null;
+
+        function update() {
+            let text = '';
+            if (points) {
+                text += `<p>
+                    Fagskole-versjonen heter "Start IT - introduksjon til programmering og IT-utvikling" og gir
+                    30 studiepoeng. Det er ikke tradisjonell eksamen, men tre innleveringer (i uke 7, 14 og 20)
+                    hvor du skal levere både kode og en tekst på 600 ord.
+                    </p>
+                    <p>
+                        På hver av disse tre innleveringene får du karakteren "bestått" eller "ikke bestått". For å få 
+                        "bestått" på hele kurset må du ha fått "bestått" på hver av disse tre. Om du får "ikke bestått"
+                        på en av dem, kan du forsøke igjen.
+                    </p>
+                    `;
+                if (loan) {
+                    text += `<p>
+                        "Start IT - introduksjon til programmering og IT-utvikling" koster 45 000kr og gir rett til støtte fra
+                        Lånekassen. Gå til <a href="https://www.lanekassen.no">www.lanekassen.no</a>. Logg inn og velg
+                        utdanningsinstitusjonen "Fagskolen GET Academy AS".                        
+                        </p>`;
+                }
+            } else {
+                text += `<p>Start IT koster 49 500kr. </p>`;
+                if (loan) {
+                    text += `<p>
+                        Du kan søke om støtte fra Lånekassen. Kurset forbereder deg på privatisteksamen i programfaget
+                        "168 Utvikling" på VG2 - Informasjonsteknologi. Les mer på <a href="https://www.vilbli.no/nb/nb/no/informasjonsteknologi-fag-og-timefordeling/program/v.im/v.imikm1----_v.imitk2----_/p2">vilbli.no</a>.
+                        </p>
+                        <p>                        
+                        Gå til <a href="https://www.lanekassen.no">www.lanekassen.no</a>. Logg inn og velg
+                        utdanningsinstitusjonen "GET Academy AS".                              
+                        </p>
+                        `;
+                }
+            }
+            document.getElementById('info').innerHTML = text;
+        }
+    </script>
+
+</body>
+
+</html>
